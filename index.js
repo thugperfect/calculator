@@ -1,12 +1,8 @@
 const input = document.getElementById("input");
 const inputField = document.getElementById("inp");
-
 const btnsTop = ["=", "<", "C"];
-
 const btnsMiddle = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-
 const btnsBottom = ["+", "-", "*", "/", "^"];
-
 function createBtns() {
   for (i = 0; i < btnsTop.length; i++) {
     const btnTop = document.createElement("div");
@@ -18,7 +14,6 @@ function createBtns() {
     }
     input.appendChild(btnTop);
   }
-
   for (i = 0; i < btnsMiddle.length; i++) {
     const btnMiddle = document.createElement("div");
     btnMiddle.className = "btns";
@@ -41,14 +36,12 @@ document.addEventListener("keydown", () => {
     }
   }
 });
-
 function btnClick() {
   const btns = document.querySelectorAll(".btns");
   for (i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", clicked);
   }
 }
-
 function clicked(e) {
   const clickedBtn = Number(e.target.id);
   const clickedSymbol = e.target.innerText;
@@ -59,12 +52,10 @@ function clicked(e) {
     inputField.value = eval(inputField.value);
   } else if (clickedBtn === 17) {
     let val = inputField.value;
-
     inputField.value = val.slice(0, val.length - 1);
   } else {
     inputField.value += clickedSymbol;
   }
 }
-
 createBtns();
 btnClick();
