@@ -1,5 +1,7 @@
 const input = document.getElementById('input')
 const inputField = document.getElementById('inp')
+let val = inputField.value
+
 const btnsTop = ['=','<','C']
 
 const btnsMiddle = ['1','2','3','4','5','6','7','8','9','0']
@@ -34,29 +36,40 @@ function createBtns (){
       input.appendChild(btnBottom)
    }
 }
+
 function btnClick(){
    const btns = document.querySelectorAll('.btns')
    for(i =0;i<btns.length;i++){
       btns[i].addEventListener('click',clicked)
    }
 }
+
+
 function clicked(e){
 const clickedBtn = Number(e.target.id)
 const clickedSymbol = e.target.innerText
-let val = inputField.value
+
+
 if(clickedBtn === 18){
    val = ''
 }
 else if(clickedBtn === 16){
    val = eval(val)
 }
+else if(clickedBtn === 17){
+   val = val.slice(0,val.length-1)
+}
 else{
    val =val+ clickedSymbol
 }
-
 inputField.value = val
-
 }
 
+
+document.addEventListener('keydown',()=>{
+   if(event.keyCode  === 13){
+     inputField.value = eval(val)
+   }
+})
 createBtns()
 btnClick()
