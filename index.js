@@ -1,6 +1,6 @@
 const input = document.getElementById('input')
 const inputField = document.getElementById('inp')
-const btnsTop = ['√','<','C']
+const btnsTop = ['=','<','C']
 
 const btnsMiddle = ['1','2','3','4','5','6','7','8','9','0']
 
@@ -42,9 +42,19 @@ function btnClick(){
 }
 function clicked(e){
 const clickedBtn = Number(e.target.id)
-console.log(clickedBtn)
-inputField.value += clickedBtn
+const clickedSymbol = e.target.innerText
+let val = inputField.value
+if(clickedBtn === 18){
+   val = ''
+}
+else if(clickedBtn === 16){
+   val = eval(val)
+}
+else{
+   val =val+ clickedSymbol
+}
 
+inputField.value = val
 
 }
 
